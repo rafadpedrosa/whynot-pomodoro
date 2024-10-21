@@ -17,6 +17,9 @@
     },
     "allowlist": {
       "all": false,
+      "notification": {
+        "all": true
+      },
       "dialog": {
         "all": true
       },
