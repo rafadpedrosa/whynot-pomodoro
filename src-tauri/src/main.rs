@@ -1,12 +1,11 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
-use tauri::{CustomMenuItem, SystemTray, SystemTrayMenu, SystemTrayEvent, SystemTrayMenuItem};
+use tauri::{CustomMenuItem, SystemTray, SystemTrayMenu, SystemTrayEvent, SystemTrayMenuItem, Size, PhysicalSize};
 use tauri_plugin_positioner::{WindowExt, Position};
 use tauri::Manager;
 
 #[tauri::command]
-fn open_window() {
-}
+fn open_window() {}
 
 #[tauri::command]
 fn greet(name: &str) -> String {
@@ -76,6 +75,12 @@ fn main() {
                 api.prevent_close();
             }
             _ => {}
+        })
+        .setup(|app| {
+            let window = app.get_window("main").unwrap();
+            let _ = window.set_size(Size::Physical(PhysicalSize { width: 100, height: 100 })).unwrap();
+
+            Ok(())
         })
         .invoke_handler(tauri::generate_handler![open_window])
         .invoke_handler(tauri::generate_handler![greet])

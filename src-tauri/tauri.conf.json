@@ -12,7 +12,7 @@
   },
   "tauri": {
     "systemTray": {
-      "iconPath": "icons/icon.png",
+      "iconPath": "./icons/128x128.png",
       "iconAsTemplate": true
     },
     "allowlist": {
@@ -73,7 +73,7 @@
       {
         "fullscreen": false,
         "resizable": false,
-        "visible": true,
+        "visible": false,
         "hiddenTitle": true,
         "titleBarStyle": "Overlay",
         "alwaysOnTop": true,
@@ -81,7 +81,7 @@
         "minimizable": false,
         "decorations": false,
         "focus": true,
-        "transparent": true,
+        "transparent": false,
         "title": "whynot-pomodoro",
         "width": 480,
         "height": 354
